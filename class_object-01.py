@@ -49,28 +49,46 @@ print(
 dog.intro()
 
 
-# ---------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------------------------------------
 
 
 class User:
     def __init__(self, name, address, age):
         self.name = name
-        self.address = address
+        self.__address = address  # Making address private by using double underscores
         self.age = age
 
     def say_hi_to(self, user):
         print(
-            f"Hey {user.name} this is me {self.name} iam from {self.address} are you from {user.address}"
+            f"Hey {user.name} this is me {self.name} I'm from {self.__address} are you from {user.__address}"
         )
 
+    # Getter method for the private attribute
+    def get_address(self):
+        return self.__address
 
-user1 = User("Ram","Kathmandu",22)
+    # Setter method for the private attribute (if you want to allow modification safely)
+    def set_address(self, new_address):
+        self.__address = new_address
+
+
+user1 = User("Ram", "Kathmandu", 22)
 user2 = User("Laxman", "Jhapa", 24)
 
+user1.say_hi_to(user2)
+
+# Trying to directly modify the private attribute (this will raise an error)
+# user2.__address = "Ilam"  # This will raise an AttributeError
+
+# Use the setter method to modify the private attribute instead
+user2.set_address("Ilam")
 
 user1.say_hi_to(user2)
 
-#modification
-user2.address = "Ilam"
+# To access the private attribute, we need to use the getter method:
+print(user2.get_address())
 
-user1.say_hi_to(user2)
+
+
+# --------------------------------------------------------------------------------------------------------------------------------
+
