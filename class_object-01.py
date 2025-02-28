@@ -54,6 +54,7 @@ dog.intro()
 
 # --------------------------------------------------------------------------------------------------------------------------------
 
+
 # getter and setter method
 # _ indicates protected and __ indicates private - variables, "Consenting adults philosophy"
 # protected can still be accessed outside the class, just follow the convention as a good developer unless it is necessary
@@ -98,3 +99,26 @@ print(user2.get_address())
 
 
 # --------------------------------------------------------------------------------------------------------------------------------
+# Properties
+
+
+class Customer:
+    def __init__(self, email, password):
+        self._email = email
+        self.password = password
+
+    @property
+    def email(self):
+        print(f"email have been accessed")
+        return self._email
+
+    @email.setter
+    def email(self, new_email):
+        if "@" in new_email:
+            self._email = new_email
+
+
+customer1 = Customer("customer@gmail.com", "123456")
+print(customer1.email)
+customer1.email = "updated@gmail.com"
+print(customer1._email)
