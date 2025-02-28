@@ -51,7 +51,8 @@ dog.intro()
 
 # --------------------------------------------------------------------------------------------------------------------------------
 
-
+# _ indicates protected and __ indicates private - variables, "Consenting adults philosophy"
+# protected can still be accessed outside the class, just follow the convention as a good developer unless it is necessary
 class User:
     def __init__(self, name, address, age):
         self.name = name
