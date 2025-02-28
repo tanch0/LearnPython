@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 class Dog:
     """
     A class that represents a dog, which has attributes like name, breed, and owner.
@@ -51,6 +54,7 @@ dog.intro()
 
 # --------------------------------------------------------------------------------------------------------------------------------
 
+# getter and setter method
 # _ indicates protected and __ indicates private - variables, "Consenting adults philosophy"
 # protected can still be accessed outside the class, just follow the convention as a good developer unless it is necessary
 class User:
@@ -66,11 +70,14 @@ class User:
 
     # Getter method for the private attribute
     def get_address(self):
+        print(f"Address accessed at {datetime.now()}")
         return self.__address
 
     # Setter method for the private attribute (if you want to allow modification safely)
     def set_address(self, new_address):
-        self.__address = new_address
+        if len(new_address) > 2:
+            self.__address = new_address
+        print("Lenght of address should be greater than 2")
 
 
 user1 = User("Ram", "Kathmandu", 22)
@@ -82,7 +89,7 @@ user1.say_hi_to(user2)
 # user2.__address = "Ilam"  # This will raise an AttributeError
 
 # Use the setter method to modify the private attribute instead
-user2.set_address("Ilam")
+user2.set_address("I")
 
 user1.say_hi_to(user2)
 
@@ -90,6 +97,4 @@ user1.say_hi_to(user2)
 print(user2.get_address())
 
 
-
 # --------------------------------------------------------------------------------------------------------------------------------
-
