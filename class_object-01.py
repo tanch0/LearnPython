@@ -160,11 +160,9 @@ class BankAccount:
         self.__balance = balance
 
     def deposit_balance(self, amount):
-        if amount > 0:
+        if self._is_valide_amount(amount):
             self.__balance += amount
-            print(
-                f"Previous balace was {self.__balance - amount} and new balace is {self.__balance} for customer: {self.name}"
-            )
+            self.__log_transaction("Deposit", amount)
         else:
             print(f"INVALID AMOUNT: {amount}")
 
@@ -172,9 +170,22 @@ class BankAccount:
     def is_valid_interest(rate):
         return 0 <= rate <= 5
 
+    # protecte method
+    def _is_valide_amount(self, amount):
+        return amount > 0
+
+    # private method
+    def __log_transaction(self, transaction_type, amount):
+        print(
+            f"Transacion type is {transaction_type}, and deopsit amount is {amount} and new balance is : {self.__balance} "
+        )
+
 
 customer1 = BankAccount("Ram", 500)
+# customer1.__log_transaction("withdrawl", 200) attributeError
 customer1.deposit_balance(100)
 print(customer1.is_valid_interest(5))
 print(BankAccount.is_valid_interest(7))
 print(BankAccount.is_valid_interest(5))
+
+# BankAccount.__log_transaction("withdrawl",200) attributeError
