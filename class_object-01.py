@@ -122,3 +122,27 @@ customer1 = Customer("customer@gmail.com", "123456")
 print(customer1.email)
 customer1.email = "updated@gmail.com"
 print(customer1._email)
+
+
+# --------------------------------------------------------------------------------------------------------------------------------
+# Static attributes: static attributes are alse called class attributes which is directly accessible from class level
+# Eg: ClassName.attr_name
+
+class Vehicle:
+    vechicle_count = 0
+
+    def __init__(self, name, model):
+        self.name = name
+        self.model = model
+        Vehicle.vechicle_count+=1
+    
+    def model_info(self):
+        print(f"Car name is {self.name} and its model is: {self.model}")
+
+
+vehicle1 = Vehicle('volvo', "volvo-xyz")
+vehicle2 = Vehicle('Ferrati', "ferari-452")
+
+print(Vehicle.vechicle_count)
+print(vehicle1.vechicle_count)
+
